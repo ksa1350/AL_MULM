@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>يوم المعلم | مدرسة عماد الدين زنكي</title>
+  <meta name="description" content="صفحة احتفاء يوم المعلم - إعداد الطالب حسام طلال سالم من الصف 2/1 💚"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800;1000&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b2f28;
+      --text:#eaf7f2;
+      --muted:#bfe5d6;
+      --brand:#22c55e;
+      --gold:#f5d36c;
+      --card:#103f36;
+      --chip:#17493f;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Cairo',sans-serif;line-height:1.8}
+    a{color:var(--gold);text-decoration:none}
+    .container{max-width:1100px;margin:auto;padding:clamp(12px,2vw,24px)}
+    header.hero{position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.08);background:linear-gradient(160deg,rgba(9,66,51,.8),rgba(9,66,51,.3));}
+    .hero-inner{display:grid;grid-template-columns:1fr;align-items:center;min-height:50vh;text-align:center}
+    .student-banner{background:linear-gradient(90deg,var(--gold),var(--brand));color:#053226;font-weight:900;font-size:20px;padding:8px 0;text-align:center;letter-spacing:1px}
+    .title{font-size:clamp(32px,5.8vw,64px);font-weight:1000;line-height:1.15;margin:10px 0;background:linear-gradient(92deg,var(--gold),#fff,var(--brand));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .subtitle{color:var(--muted);font-size:clamp(14px,2.2vw,18px);margin:0 0 18px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .btn{cursor:pointer;border:0;padding:12px 18px;border-radius:14px;background:linear-gradient(180deg,var(--brand),#159a52);color:#053226;font-weight:800;box-shadow:0 10px 30px rgba(34,197,94,.25);transition:.2s transform}
+    .btn:hover{transform:translateY(-2px)}
+    section{padding:40px 0}
+    h2.section-title{margin:0 0 18px;font-size:clamp(22px,3.4vw,32px);text-align:center}
+    .section-desc{margin-top:-8px;color:var(--muted);text-align:center}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){.grid.cols-3{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:540px){.grid.cols-3{grid-template-columns:1fr}}
+    .card{background:linear-gradient(180deg,var(--card),#0e362f);border:1px solid rgba(255,255,255,.06);border-radius:18px;overflow:hidden;text-align:center}
+    .card .body{padding:16px}
+    .subject{display:inline-block;background:var(--chip);border:1px solid rgba(255,255,255,.06);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--muted)}
+    .name{margin:8px 0 6px;font-size:18px;font-weight:800}
+    footer{padding:28px 0 40px;border-top:1px solid rgba(255,255,255,.08);color:var(--muted);text-align:center}
+    .student-info{margin-top:10px;font-size:15px;color:var(--gold);font-weight:700;}
+    .confetti{position:fixed;inset:0;pointer-events:none}
+  </style>
+</head>
+<body>
+  <div class="student-banner">إعداد الطالب: <b>حسام طلال سالم</b> — الصف <b>2/1</b> 💚</div>
+  <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+  <header class="hero">
+    <div class="container hero-inner">
+      <div>
+        <h1 class="title">يـوم المعلـم 💚 1447هـ / 2025</h1>
+        <p class="subtitle">لكل يدٍ علّمت وأضاءت طريقنا… شكرًا معلمينا على العطاء والإلهام. هذه صفحة شكر من طلاب <b>الصف 2/1</b> بإشراف الإدارة.</p>
+        <div class="cta">
+          <button class="btn" id="btnFire">أطلق الاحتفال 🎉</button>
+          <a href="#teachers" class="btn">قائمة المعلمين</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <h2 class="section-title">لماذا نحتفل بيوم المعلم؟</h2>
+      <p class="section-desc">الاحتفاء بالمعلم هو اعتراف بجهده في بناء العقول وصناعة المستقبل. هنا نوثق أسماء معلمينا ونقدم لهم كلمات شكر من القلب.</p>
+    </section>
+
+    <section id="teachers">
+      <h2 class="section-title">قائمة المعلمين والمواد</h2>
+      <div class="grid cols-3" id="teachersGrid"></div>
+    </section>
+
+    <section id="supervisors">
+      <h2 class="section-title">المشرفون</h2>
+      <div class="grid cols-3" id="supervisorsGrid"></div>
+    </section>
+  </main>
+
+  <footer class="container">
+    صُنِع بحب 💚 بمناسبة <b>يوم المعلم</b>. — إعداد الطالب <b>حسام طلال سالم</b> من الصف <b>2/1</b>.
+  </footer>
+
+  <script>
+    const teachers = [
+      { name: 'موسى الفاهمي', subject: 'البدنية', text: 'الأستاذ موسى الفاهمي مثال في النشاط والحيوية، يشجعنا دائمًا على التعاون والروح الرياضية.' },
+      { name: 'مسفر الغامدي', subject: 'الإسلامية', text: 'الأستاذ مسفر الغامدي يزرع فينا القيم الإسلامية ويقربنا من حب الخير والطاعة بأسلوب جميل.' },
+      { name: 'عطية الزهراني', subject: 'لغتي', text: 'الأستاذ عطية الزهراني يجعل اللغة العربية ممتعة وسهلة ويعلمنا جمال الكلمة والمعنى.' },
+      { name: 'صديق جعلوم', subject: 'الرياضيات', text: 'الأستاذ صديق جعلوم يشرح الدروس بطريقة مبسطة تجعلنا نحب الأرقام والمعادلات.' },
+      { name: 'ناصر الشهري', subject: 'العلوم', text: 'الأستاذ ناصر الشهري يأخذنا في رحلة ممتعة داخل عالم الاكتشاف والتجارب العلمية.' },
+      { name: 'حسين مباركي', subject: 'الإنجليزي', text: 'الأستاذ حسين مباركي يجعل تعلم اللغة الإنجليزية مغامرة شيقة ومليئة بالمرح.' },
+      { name: 'حامد الجدعاني', subject: 'الرقمية', text: 'الأستاذ حامد الجدعاني يساعدنا على فهم التقنية ويجعل التعلم ممتعًا ومفيدًا.' },
+      { name: 'محمد الزهراني', subject: 'الاجتماعيات', text: 'الأستاذ محمد الزهراني يفتح لنا آفاق التاريخ والجغرافيا بأسلوب رائع وسهل.' },
+      { name: 'أحمد الأسمري', subject: 'النشاط', text: 'الأستاذ أحمد الأسمري يشجعنا على المشاركة ويزرع فينا روح التعاون والتفوق.' },
+      { name: 'نايف الشمراني', subject: 'الفنية', text: 'الأستاذ نايف الشمراني يخرج أجمل إبداعاتنا ويجعلنا نعبر عن أنفسنا بالفن.' },
+      { name: 'محمد الغامدي', subject: 'الحياتية', text: 'الأستاذ محمد الغامدي يعلمنا كيف نعيش بحكمة وننظم حياتنا بطريقة مفيدة وجميلة.' },
+    ];
+
+    const supervisors = [
+      { name: 'ياسر الهذلي', subject: 'مشرف عام', text: 'الأستاذ ياسر الهذلي دائم المتابعة ويهتم بتطوير المعلمين والطلاب بخطى ثابتة.' },
+      { name: 'محمد الحجالي', subject: 'مشرف عام', text: 'الأستاذ محمد الحجالي يبذل جهودًا كبيرة في متابعة الأنشطة وتحفيز الجميع.' },
+      { name: 'محمد السيد', subject: 'مشرف عام', text: 'الأستاذ محمد السيد يتميز بحرصه الدائم على جودة التعليم وتطوير الأداء.' }
+    ];
+
+    const grid = document.getElementById('teachersGrid');
+    teachers.forEach(t => {
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="body">
+          <span class="subject">${t.subject}</span>
+          <div class="name">${t.name}</div>
+          <p style="color:var(--muted);font-size:14px">${t.text}</p>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    const sgrid = document.getElementById('supervisorsGrid');
+    supervisors.forEach(s => {
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="body">
+          <span class="subject">${s.subject}</span>
+          <div class="name">${s.name}</div>
+          <p style="color:var(--muted);font-size:14px">${s.text}</p>
+        </div>
+      `;
+      sgrid.appendChild(card);
+    });
+
+    const cvs = document.getElementById('confetti');
+    const ctx = cvs.getContext('2d');
+    let particles = [];
+    function resize(){cvs.width=innerWidth; cvs.height=innerHeight}
+    addEventListener('resize', resize); resize();
+
+    function burst(x,y,n=120){
+      for(let i=0;i<n;i++){
+        particles.push({
+          x,y,
+          vx:(Math.random()-0.5)*6,
+          vy:(Math.random()-1)*6-2,
+          g:0.15+Math.random()*0.2,
+          s:2+Math.random()*3,
+          a:1,
+          c:[ '#f5d36c','#22c55e','#84cc16','#eaf7f2' ][(Math.random()*4)|0]
+        });
+      }
+    }
+    function loop(){
+      ctx.clearRect(0,0,cvs.width,cvs.height);
+      particles.forEach(p=>{
+        p.vy+=p.g; p.x+=p.vx; p.y+=p.vy; p.a-=0.008;
+        ctx.globalAlpha=Math.max(p.a,0);
+        ctx.fillStyle=p.c;
+        ctx.fillRect(p.x,p.y,p.s,p.s*2);
+      });
+      particles = particles.filter(p=>p.a>0 && p.y<cvs.height+20);
+      requestAnimationFrame(loop);
+    } loop();
+
+    document.getElementById('btnFire').onclick = ()=>{
+      const r = cvs.getBoundingClientRect();
+      burst(r.width*0.2, r.height*0.3, 150);
+      burst(r.width*0.8, r.height*0.25, 150);
+      burst(r.width*0.5, r.height*0.15, 200);
+    };
+  </script>
+</body>
+</html>
